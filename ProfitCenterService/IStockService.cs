@@ -7,6 +7,6 @@ namespace ProfitCenterService
     public interface IStockService
     {
         [OperationContract(IsOneWay = true)]
-        void SendStockDetail(Stock stock);
+        void SendStock(Stock stock);
     }
 }

@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\StockServiceRef\Reference.cs">
+    <Compile Include="Service References\ServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -59,31 +59,31 @@
     <None Include="ProfitCenter.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Service References\StockServiceRef\mex2.xsd">
+    <None Include="Service References\ServiceReference\mex.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\StockServiceRef\StockService1.wsdl" />
+    <None Include="Service References\ServiceReference\mex1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\mex2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\StockService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\StockServiceRef\" />
+    <WCFMetadataStorage Include="Service References\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\StockServiceRef\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\StockServiceRef\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\StockServiceRef\mex.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\StockServiceRef\mex1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\StockServiceRef\Reference.svcmap">
+    <None Include="Service References\ServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

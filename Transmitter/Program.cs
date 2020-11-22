@@ -5,7 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
-using Transmitter.StockServiceRef;
+using Transmitter.ServiceReference;
 
 namespace Transmitter
 {
@@ -29,7 +29,7 @@ namespace Transmitter
             while (true)
             {
                 var stock = GenerateStock();
-                client.SendStockDetail(stock);
+                client.SendStock(stock);
             }
 
             ((IClientChannel)client).Close();
