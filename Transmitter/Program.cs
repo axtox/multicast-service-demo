@@ -27,10 +27,13 @@ namespace Transmitter
 
             Console.WriteLine("Immediately start stock transmitting..\n\n");
 
+            long totalPackages = 0;
             while (true)
             {
                 var stock = _random.Next(randomMin, randomMax);
-                await client.SendStockAsync(stock); // no need for await?
+                var sendTask = client.SendStockAsync(stock); // no need for await?
+                Console.Write($"\rPackages sent: {++totalPackages}");
+                await sendTask;
             }
 
             ((IClientChannel)client).Close();

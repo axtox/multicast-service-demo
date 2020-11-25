@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Receiver.Processors;
 
 namespace Receiver.Service
 {
@@ -7,7 +8,8 @@ namespace Receiver.Service
     {
         public async Task SendStock(int stock)
         {
-            Console.WriteLine($"Stock: Price: ${stock:C}");
+            //thread-safe call
+            await StockProcessing.Instance.AddStock(stock);
         }
     }
 }
