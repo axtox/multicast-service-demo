@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 using System.ServiceModel.Description;
-using ProfitCenterService;
+using Receiver.Service;
 
 namespace Receiver
 {

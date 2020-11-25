@@ -22,7 +22,6 @@
     <MetadataSource Address="http://localhost:34196/StockService/mex" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="mex.xsd" MetadataType="Schema" ID="70324a46-3e06-4936-b8b9-6d836786e10e" SourceId="1" SourceUrl="http://localhost:34196/StockService/mex?xsd=xsd2" />
     <MetadataFile FileName="mex1.xsd" MetadataType="Schema" ID="dac1768d-4573-4336-b524-077d7cd4a2de" SourceId="1" SourceUrl="http://localhost:34196/StockService/mex?xsd=xsd0" />
     <MetadataFile FileName="StockService.wsdl" MetadataType="Wsdl" ID="eb493ae9-4f77-49b5-a136-b121ebff1820" SourceId="1" SourceUrl="http://localhost:34196/StockService/mex" />
     <MetadataFile FileName="mex2.xsd" MetadataType="Schema" ID="f35fc6c5-7305-4846-8c39-c879236576ee" SourceId="1" SourceUrl="http://localhost:34196/StockService/mex?xsd=xsd1" />

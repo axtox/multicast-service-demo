@@ -59,9 +59,6 @@
     <None Include="ProfitCenter.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Service References\ServiceReference\mex.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ServiceReference\mex1.xsd">
       <SubType>Designer</SubType>
     </None>

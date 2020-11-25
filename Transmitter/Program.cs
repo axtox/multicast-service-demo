@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Threading;
 using Transmitter.ServiceReference;
 
 namespace Transmitter
@@ -16,7 +17,7 @@ namespace Transmitter
         private static int randomMin;
         private static string TransmitterAddress;
 
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             GetSettingsForRandom();
             GetSettingsForTransmitter();
@@ -28,20 +29,21 @@ namespace Transmitter
 
             while (true)
             {
-                var stock = GenerateStock();
-                client.SendStock(stock);
+                var stock = _random.Next(randomMin, randomMax);
+                await client.SendStockAsync(stock); // no need for await?
             }
 
             ((IClientChannel)client).Close();
         }
 
-        private static Stock GenerateStock()
+        private static async Task Transmit(CancellationToken cancellation)
         {
-            return new Stock
+            while (true)
             {
-                Price = _random.Next(randomMin, randomMax) + _random.NextDouble()
-            };
-        }
+
+                cancellation.ThrowIfCancellationRequested();
+            }
+        } 
 
         private static void GetSettingsForRandom()
         {
