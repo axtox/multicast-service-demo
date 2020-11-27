@@ -17,32 +17,53 @@ namespace Transmitter
         private static int randomMin;
         private static string TransmitterAddress;
 
+        private static int _totalPackages;
+
         private static async Task Main(string[] args)
         {
             GetSettingsForRandom();
             GetSettingsForTransmitter();
 
-            var client = new StockServiceClient();
-            client.Endpoint.Address = new EndpointAddress($"soap.udp://{TransmitterAddress}:34197/StockService");
 
-            Console.WriteLine("Immediately start stock transmitting..\n\n");
+            Console.SetCursorPosition(0, Console.WindowHeight - 1);
+            Console.WriteLine("Press ESC key to stop transmitting.");
 
-            long totalPackages = 0;
-            while (true)
+            var cancellation = new CancellationTokenSource();
+
+            Console.SetCursorPosition(0, Console.WindowHeight / 2);
+            Console.WriteLine("Immediately start stock transmitting...");
+
+            Transmit(cancellation.Token); // no awaiting. fire and go
+
+
+            while (Console.ReadKey().Key != ConsoleKey.Escape)
             {
-                var stock = _random.Next(randomMin, randomMax);
-                var sendTask = client.SendStockAsync(stock); // no need for await?
-                Console.Write($"\rPackages sent: {++totalPackages}");
-                await sendTask;
             }
 
-            ((IClientChannel)client).Close();
+            cancellation.Cancel();
+
+            //((IClientChannel)client).Close();
         }
 
         private static async Task Transmit(CancellationToken cancellation)
         {
+            var client = new StockServiceClient();
+            client.Endpoint.Address = new EndpointAddress($"soap.udp://{TransmitterAddress}:34197/StockService");
+
             while (true)
             {
+                var stock = _random.Next(randomMin, randomMax);
+                var sendTask = client.SendStockAsync(stock); // no need for await?
+
+                cancellation.ThrowIfCancellationRequested();
+
+                Interlocked.Increment(ref _totalPackages);
+                
+                await sendTask;
+
+                var message = $"Packages sent {_totalPackages}";
+                Console.SetCursorPosition(Console.WindowWidth - message.Length, 0);
+                Console.Write(message);
 
                 cancellation.ThrowIfCancellationRequested();
             }
