@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\ConsolePrintManager.cs" />
+    <Compile Include="Model\ReceiverReport.cs" />
+    <Compile Include="Model\Statistics.cs" />
     <Compile Include="Processors\StockProcessing.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

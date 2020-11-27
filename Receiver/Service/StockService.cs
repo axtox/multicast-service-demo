@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Receiver.Managers;
 using Receiver.Processors;
 
 namespace Receiver.Service
@@ -8,8 +9,11 @@ namespace Receiver.Service
     {
         public async Task SendStock(int stock)
         {
-            //thread-safe call
-            await StockProcessing.Instance.AddStock(stock);
+            //thread-safe call of Instance field
+            var report = StockProcessing.Instance.AddStock(stock);
+
+            //thread-safe call of Instance field
+            ConsolePrintManager.Instance.PrintReport(await report);
         }
     }
 }
